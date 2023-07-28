@@ -1,0 +1,37 @@
+<%if user_signed_in? %>
+<h1>Friend list</h1>
+<table class="table table-striped table-hover">
+ <thead class="thread-dark">
+  <tr>
+    <th>Name</th>
+    <th>Initial</th>
+    <th>Number</th>
+    <th>Email</th>
+    <th>Address</th>
+  </tr>
+
+ </thead>
+    
+<!--div id="friends" -->
+<tbody >
+  
+  <% @friends.each do |friend| %>
+  <% if friend.user == current_user %>
+  <tr>
+   <td><%=link_to friend.first_name.capitalize + ' ' + friend.last_name.capitalize,friend  %></td>
+   <td><%=friend.initial.capitalize %></td>
+   <td><%=friend.phone %></td>
+   <td><%=friend.email.capitalize %></td>
+   <td><%=friend.address.capitalize %></td>
+ </tr>
+ <% end %>
+  <% end %>
+</tbody>
+  </div>
+
+  </table>
+
+<%= link_to "New friend", new_friend_path,class:"btn btn-secondary" %>
+<% else %>
+<%= yield %>
+<% end %>
