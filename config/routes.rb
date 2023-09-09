@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :friends
+  resources :diary_entries
+
   get 'home/about'
   get 'home/cards'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
